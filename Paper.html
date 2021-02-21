@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css" class="rel">
+    <style>
+        .basic {
+            margin-top: 15px;
+        }
+
+        .bg-warning {
+            background-color: rgb(151, 252, 233) !important;
+        }
+
+        .bg-green {
+            background-color: rgb(53, 232, 17);
+        }
+    </style>
+    <title>Project By Nabeel Iqbal</title>
+</head>
+
+<body>
+    <div class="container-fluid" style="background-color: rgb(69, 252, 218);">
+        <div class="row align-content-center justify-content-center" id="row" style="height: 100vh;">
+            <div class="col-md-6  bg-warning rounded" style="border-radius: 10;">
+                <div class="form-group pt-4 w-50 m-auto">
+                    <h1>Invitation Record</h1>
+                    <input type="text" class="form-control form-control-lg basic" id="nme"
+                        placeholder="Name of Participent">
+                    <select name="" id="ftype" class="form-control form-control-lg basic">
+                        <option value="Mehndi">Mehndi</option>
+                        <option value="Barat">Barat</option>
+                        <option value="Walima">Walima</option>
+                    </select>
+                    <select name="" id="invt" class="form-control form-control-lg basic">
+                        <option value="Single">Single</option>
+                        <option value="Couple">Couple</option>
+                        <option value="Family">Family</option>
+                    </select>
+                    <button class="btn-lg basic btn btn-outline-primary mb-2" id="sve">Save</button>
+                    <table class="table table-striped table-hover" id="my_list">
+                        <caption>Wellcome</caption>
+                        <thead class="bg-green">
+                            <tr>
+                                <th>#</th>
+                                <th>Guest Name</th>
+                                <th>Function</th>
+                                <th>Participation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Bilal</td>
+                                <td>Barat</td>
+                                <td>Family</td>
+                            </tr>
+                            </tbodyd>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var b = document.getElementById("sve");
+        var capt = document.querySelector("caption");
+        upCap();
+        b.onclick = function () {
+            var n = document.getElementById("nme");
+            var f = document.getElementById("ftype");
+            var i = document.getElementById("invt");
+            var mytrid = document.querySelector("#my_list tbody").children.length;
+            if (n.value.length == '') {
+                alert("Participent Name Not be empty!");
+                return;
+            }
+            var mytr = `
+        <tr>
+            <th>${parseInt(mytrid + 1)}</th>
+            <td>${n.value}</td>
+            <td>${f.value}</td>
+            <td>${i.value}</td>
+        </tr>
+          `;
+            document.querySelector("#my_list tbody").insertAdjacentHTML("beforeend", mytr);
+            n.value = '';
+            upCap();
+        }
+        function upCap() {
+            var len = document.querySelector('#my_list tbody').children.length;
+            var capstring = 'Total Invited Members : ' + parseInt(len);
+            capt.innerHTML = capstring;
+        }
+
+    </script>
+</body>
+
+</html>
